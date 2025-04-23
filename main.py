@@ -7,7 +7,7 @@ from pydantic import BaseModel
 from fastapi.responses import HTMLResponse
 
 app = FastAPI(
-title="Aplikasi API Saya",
+    title="Aplikasi API Saya",
     description="API sederhana yang dibangun dengan FastAPI",
     version="0.1.0",
 )
@@ -21,14 +21,12 @@ async def read_root():
         <title>Selamat Datang</title>
     </head>
     <body>
-        <h1>Selamat datang di aplikasi FastAPI saya!</h1>
+        <h1>Selamat datang </h1>
         <p>Ini adalah halaman utama.</p>
     </body>
     </html>
     """
     return HTMLResponse(content=html_content)
-
-
 
 # Informasi koneksi database
 DATABASE_URL = "sqlite:///./mydatabase.db"  # Contoh SQLite, ganti dengan koneksi database Anda
@@ -66,9 +64,6 @@ class ItemResponse(BaseModel):
 
     class Config:
         orm_mode = True
-
-# Membuat instance FastAPI
-app = FastAPI()
 
 # Endpoint untuk mendapatkan semua item
 @app.get("/items/", response_model=List[ItemResponse])
